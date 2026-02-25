@@ -1,8 +1,8 @@
-﻿using SistemaDeReservas.Aplication.Interfaces;
+﻿using SistemaDeReservas.Application.Interfaces;
 using SistemaDeReservas.Domain.Interfaces;
 using SistemaDeReservas.Infraestructure.Entities;
 
-namespace SistemaDeReservas.Aplication.Services
+namespace SistemaDeReservas.Application.Services
 {
     public class UserService : IUserService
     {

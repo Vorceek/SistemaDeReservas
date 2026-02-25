@@ -1,6 +1,6 @@
 ﻿using SistemaDeReservas.Infraestructure.Entities;
 
-namespace SistemaDeReservas.Aplication.Interfaces
+namespace SistemaDeReservas.Application.Interfaces
 {
     public interface IUserService
     {
