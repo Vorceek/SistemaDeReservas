@@ -1,8 +1,7 @@
 ﻿using Dapper;
-using SistemaDeReservas.Domain.Interfaces;
-using SistemaDeReservas.Infraestructure.Entities;
+using SistemaDeReservas.Application.Interfaces.Users;
+using SistemaDeReservas.Domain.Entities;
 using System.Data;
-using System.Reflection.Emit;
 
 namespace SistemaDeReservas.Infraestructure.Repositories
 {

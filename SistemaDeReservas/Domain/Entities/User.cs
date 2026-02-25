@@ -1,5 +1,4 @@
-﻿
-namespace SistemaDeReservas.Infraestructure.Entities
+﻿namespace SistemaDeReservas.Domain.Entities
 {
     public class User
     {

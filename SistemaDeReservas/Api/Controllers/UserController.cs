@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SistemaDeReservas.Aplication.Interfaces;
-using SistemaDeReservas.Domain.Interfaces;
-using SistemaDeReservas.Infraestructure.Entities;
+using SistemaDeReservas.Application.Interfaces;
+using SistemaDeReservas.Application.Interfaces.Users;
+using SistemaDeReservas.Domain.Entities;
 
 namespace SistemaDeReservas.Api.Controllers
 {
