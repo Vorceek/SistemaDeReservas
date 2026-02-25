@@ -17,5 +17,11 @@ namespace SistemaDeReservas.Aplication.Services
         {
             return await _repository.GetAllAsync();
         }
+
+        public async Task<int> InsertAsync(User user)
+        {
+            if (user == null) return 0;
+            return await _repository.InsertAsync(user);
+        }
     }
 }

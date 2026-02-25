@@ -18,5 +18,11 @@ namespace SistemaDeReservas.Api.Controllers
         {
             return await _userInterface.GetAllUser();
         }
+
+        [HttpPost]
+        public async Task<int> InsertAsync(User user)
+        {
+            return await _userInterface.InsertAsync(user);
+        }
     }
 }
