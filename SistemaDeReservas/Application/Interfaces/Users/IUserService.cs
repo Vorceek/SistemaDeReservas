@@ -1,10 +1,12 @@
-﻿using SistemaDeReservas.Domain.Entities;
+﻿using SistemaDeReservas.Application.DTOs.Users;
+using SistemaDeReservas.Domain.Entities;
 
 namespace SistemaDeReservas.Application.Interfaces.Users
 {
     public interface IUserService
     {
-        Task<IEnumerable<User>> GetAllUser();
-        Task<int> InsertAsync(User user);
+        Task<IEnumerable<UserResponseDto>> GetAllUser();
+        Task<int> InsertAsync(CreateUserDto dto);
     }
 }
+
