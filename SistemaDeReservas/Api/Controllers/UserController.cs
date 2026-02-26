@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using SistemaDeReservas.Application.Interfaces;
+﻿using Microsoft.AspNetCore.Mvc;
 using SistemaDeReservas.Application.Interfaces.Users;
 using SistemaDeReservas.Domain.Entities;
 

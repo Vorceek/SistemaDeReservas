@@ -1,6 +1,7 @@
-﻿using SistemaDeReservas.Application.Interfaces;
-using SistemaDeReservas.Domain.Interfaces;
-using SistemaDeReservas.Infraestructure.Entities;
+﻿
+
+using SistemaDeReservas.Application.Interfaces.Users;
+using SistemaDeReservas.Domain.Entities;
 
 namespace SistemaDeReservas.Application.Services
 {

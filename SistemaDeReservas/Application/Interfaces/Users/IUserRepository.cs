@@ -1,6 +1,6 @@
-﻿using SistemaDeReservas.Infraestructure.Entities;
+﻿using SistemaDeReservas.Domain.Entities;
 
-namespace SistemaDeReservas.Domain.Interfaces
+namespace SistemaDeReservas.Application.Interfaces.Users
 {
     public interface IUserRepository
     {

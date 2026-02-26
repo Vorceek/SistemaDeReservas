@@ -1,6 +1,6 @@
 using Microsoft.Data.SqlClient;
 using SistemaDeReservas.Application.Interfaces.Users;
-using SistemaDeReservas.Application.Services.Users;
+using SistemaDeReservas.Application.Services;
 using SistemaDeReservas.Infraestructure.Repositories;
 using System.Data;
 
