@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SistemaDeReservas.Application.DTOs.Users;
 using SistemaDeReservas.Application.Interfaces.Users;
 using SistemaDeReservas.Domain.Entities;
 
@@ -8,19 +9,16 @@ namespace SistemaDeReservas.Api.Controllers
     [ApiController]
     public class UserController(IUserService userService) : ControllerBase
     {
-        private readonly IUserService _userInterface = userService;
-
-
         [HttpGet]
-        public async Task<IEnumerable<User>> GetAllUser()
+        public async Task<IEnumerable<UserResponseDto>> GetAllUser()
         {
-            return await _userInterface.GetAllUser();
+            return await userService.GetAllUser();
         }
 
         [HttpPost]
-        public async Task<int> InsertAsync(User user)
+        public async Task<int> InsertAsync(CreateUserDto user)
         {
-            return await _userInterface.InsertAsync(user);
+            return await userService.InsertAsync(user);
         }
     }
 }

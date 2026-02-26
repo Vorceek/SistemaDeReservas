@@ -1,28 +1,33 @@
 ﻿
 
+using SistemaDeReservas.Application.DTOs.Users;
 using SistemaDeReservas.Application.Interfaces.Users;
 using SistemaDeReservas.Domain.Entities;
 
 namespace SistemaDeReservas.Application.Services
 {
-    public class UserService : IUserService
+    public class UserService(IUserRepository repository) : IUserService
     {
-        private readonly IUserRepository _repository;
 
-        public UserService(IUserRepository repository)
+        public async Task<IEnumerable<UserResponseDto>> GetAllUser()
         {
-            _repository = repository;
+            var users = await repository.GetAllAsync();
+            return users.Select(u => new UserResponseDto
+            {
+                Id = u.Id,
+                Nome = u.Nome,
+                Cpf = u.Cpf
+            });
         }
 
-        public async Task<IEnumerable<User>> GetAllUser()
+        public async Task<int> InsertAsync(CreateUserDto dto)
         {
-            return await _repository.GetAllAsync();
-        }
-
-        public async Task<int> InsertAsync(User user)
-        {
-            if (user == null) return 0;
-            return await _repository.InsertAsync(user);
+            var user = new User
+            {
+                Nome = dto.Nome,
+                Cpf = dto.Cpf
+            };
+            return await repository.InsertAsync(user);
         }
     }
 }
