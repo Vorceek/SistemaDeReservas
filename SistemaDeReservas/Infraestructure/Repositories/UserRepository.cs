@@ -16,7 +16,7 @@ namespace SistemaDeReservas.Infraestructure.Repositories
 
         public async Task<IEnumerable<User>> GetAllAsync()
         {
-            var sql = "SELECT * FROM Users";
+            var sql = "SELECT Id, Nome, Cpf FROM Users";
             return await _connection.QueryAsync<User>(sql);
         }
 
