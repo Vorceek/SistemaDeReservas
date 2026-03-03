@@ -1,8 +1,10 @@
 using Microsoft.Data.SqlClient;
 using SistemaDeReservas.Application.Interfaces.Hoteis;
+using SistemaDeReservas.Application.Interfaces.Quartos;
 using SistemaDeReservas.Application.Interfaces.Users;
 using SistemaDeReservas.Application.Services;
 using SistemaDeReservas.Application.Services.Hoteis;
+using SistemaDeReservas.Application.Services.Quartos;
 using SistemaDeReservas.Infraestructure.Repositories;
 using System.Data;
 
@@ -28,6 +30,10 @@ builder.Services.AddScoped<IUserService, UserService>();
 // Hoteis
 builder.Services.AddScoped<IHotelRepository, HotelRepository>();
 builder.Services.AddScoped<IHotelService, HotelService>();
+
+// Quartos
+builder.Services.AddScoped<IQuartoRepository, QuartoRepository>();
+builder.Services.AddScoped<IQuartoService, QuartoService>();
 
 var app = builder.Build();
 
