@@ -9,10 +9,10 @@ namespace SistemaDeReservas.Application.Services
     public class UserService(IUserRepository repository) : IUserService
     {
 
-        public async Task<IEnumerable<UserResponseDto>> GetAllUser()
+        public async Task<IEnumerable<ResponseUserDto>> GetAllUser()
         {
             var users = await repository.GetAllAsync();
-            return users.Select(u => new UserResponseDto
+            return users.Select(u => new ResponseUserDto
             {
                 Id = u.Id,
                 Nome = u.Nome,
@@ -20,7 +20,7 @@ namespace SistemaDeReservas.Application.Services
             });
         }
 
-        public async Task<int> InsertAsync(CreateUserDto dto)
+        public async Task<ResponseUserDto> InsertAsync(CreateUserDto dto)
         {
             var user = new User
             {
@@ -28,7 +28,13 @@ namespace SistemaDeReservas.Application.Services
                 Nome = dto.Nome,
                 Cpf = dto.Cpf
             };
-            return await repository.InsertAsync(user);
+            await repository.InsertAsync(user);
+            return new ResponseUserDto
+            {
+                Id = user.Id,
+                Nome = user.Nome,
+                Cpf = user.Cpf
+            };
         }
     }
 }

@@ -10,13 +10,13 @@ namespace SistemaDeReservas.Api.Controllers
     public class UserController(IUserService userService) : ControllerBase
     {
         [HttpGet]
-        public async Task<IEnumerable<UserResponseDto>> GetAllUser()
+        public async Task<IEnumerable<ResponseUserDto>> GetAllUser()
         {
             return await userService.GetAllUser();
         }
 
         [HttpPost]
-        public async Task<int> InsertAsync(CreateUserDto user)
+        public async Task<ResponseUserDto> InsertAsync(CreateUserDto user)
         {
             return await userService.InsertAsync(user);
         }
