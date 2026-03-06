@@ -1,3 +1,4 @@
+using FluentValidation;
 using Microsoft.Data.SqlClient;
 using SistemaDeReservas.Application.Interfaces.Hoteis;
 using SistemaDeReservas.Application.Interfaces.Quartos;
@@ -7,23 +8,24 @@ using SistemaDeReservas.Application.Services;
 using SistemaDeReservas.Application.Services.Hoteis;
 using SistemaDeReservas.Application.Services.Quartos;
 using SistemaDeReservas.Application.Services.Reservas;
+using SistemaDeReservas.Application.Validators.Users;
 using SistemaDeReservas.Infraestructure.Repositories;
 using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
 builder.Services.AddScoped<IDbConnection>(sp =>
     new SqlConnection(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
+
+// Validators
+builder.Services.AddValidatorsFromAssemblyContaining<CreateUserValidator>();
 
 // Users
 builder.Services.AddScoped<IUserRepository, UserRepository>();

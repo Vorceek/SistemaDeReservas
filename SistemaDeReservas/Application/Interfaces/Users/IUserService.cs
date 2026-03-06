@@ -5,8 +5,8 @@ namespace SistemaDeReservas.Application.Interfaces.Users
 {
     public interface IUserService
     {
-        Task<IEnumerable<UserResponseDto>> GetAllUser();
-        Task<UserResponseDto> InsertAsync(CreateUserDto dto);
+        Task<IEnumerable<ResponseUserDto>> GetAllUser();
+        Task<ResponseUserDto> InsertAsync(CreateUserDto dto);
     }
 }
 
