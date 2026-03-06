@@ -24,6 +24,7 @@ namespace SistemaDeReservas.Application.Services
         {
             var user = new User
             {
+                Id = Guid.NewGuid(),
                 Nome = dto.Nome,
                 Cpf = dto.Cpf
             };

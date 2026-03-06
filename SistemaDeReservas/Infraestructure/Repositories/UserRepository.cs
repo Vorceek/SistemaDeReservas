@@ -23,8 +23,8 @@ namespace SistemaDeReservas.Infraestructure.Repositories
         public async Task<int> InsertAsync(User user)
         {
             var sql = @"
-                INSERT INTO Users (Nome, Cpf)
-                VALUES (@Nome, @Cpf)";
+                INSERT INTO Users (Id, Nome, Cpf)
+                VALUES (@Id, @Nome, @Cpf)";
 
             return await _connection.ExecuteAsync(sql, user);
         }
