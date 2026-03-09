@@ -5,6 +5,6 @@ namespace SistemaDeReservas.Application.Interfaces.Reservas
     public interface IReservaService
     {
         Task<IEnumerable<ResponseReservaDto>> GetAllReserva();
-        Task<int> InsertAsync(CreateReservaDto dto);
+        Task<ResponseReservaDto> InsertAsync(CreateReservaDto dto);
     }
 }
