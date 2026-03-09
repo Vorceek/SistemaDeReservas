@@ -1,6 +1,6 @@
 ﻿namespace SistemaDeReservas.Application.DTOs.Users
 {
-    public class UserResponseDto
+    public class ResponseUserDto
     {
         public Guid Id { get; set; }
         public required string Nome { get; set; }
