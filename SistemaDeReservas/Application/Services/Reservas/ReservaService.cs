@@ -21,7 +21,7 @@ namespace SistemaDeReservas.Application.Services.Reservas
             });
         }
 
-        public async Task<int> InsertAsync(CreateReservaDto dto)
+        public async Task<ResponseReservaDto> InsertAsync(CreateReservaDto dto)
         {
             var reserva = new Reserva
             {
@@ -32,7 +32,17 @@ namespace SistemaDeReservas.Application.Services.Reservas
                 CheckIn = dto.CheckIn,
                 CheckOut = dto.CheckOut
             };
-            return await repository.InsertAsync(reserva);
+            
+            await repository.InsertAsync(reserva);
+            return new ResponseReservaDto
+            {
+                Id = reserva.Id,
+                HotelId = reserva.HotelId,
+                QuartoId = reserva.QuartoId,
+                UserId = reserva.UserId,
+                CheckIn = reserva.CheckIn,
+                CheckOut = reserva.CheckOut
+            };
         }
     }
 }
