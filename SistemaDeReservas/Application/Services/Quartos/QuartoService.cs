@@ -20,7 +20,7 @@ namespace SistemaDeReservas.Application.Services.Quartos
             });
         }
 
-        public async Task<int> InsertAsync(CreateQuartoDto dto)
+        public async Task<ResponseQuartoDto> InsertAsync(CreateQuartoDto dto)
         {
             var quarto = new Quarto
             {
@@ -31,7 +31,16 @@ namespace SistemaDeReservas.Application.Services.Quartos
                 Diaria = dto.Diaria,
                 HotelId = dto.HotelId
             };
-            return await repository.InsertAsync(quarto);
+            await repository.InsertAsync(quarto);
+            return new ResponseQuartoDto
+            {
+                Id = quarto.Id,
+                Nome = quarto.Nome,
+                Capacidade = quarto.Capacidade,
+                Quantidade = quarto.Quantidade,
+                Diaria = quarto.Diaria,
+                HotelId = quarto.HotelId
+            };
         }
     }
 }
