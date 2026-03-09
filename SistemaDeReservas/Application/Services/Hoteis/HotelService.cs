@@ -17,7 +17,7 @@ namespace SistemaDeReservas.Application.Services.Hoteis
             });
         }
 
-        public async Task<int> InsertAsync(CreateHotelDto dto)
+        public async Task<ResponseHotelDto> InsertAsync(CreateHotelDto dto)
         {
             var hotel = new Hotel
             {
@@ -25,7 +25,13 @@ namespace SistemaDeReservas.Application.Services.Hoteis
                 Nome = dto.Nome,
                 Cnpj = dto.Cnpj
             };
-            return await repository.InsertAsync(hotel);
+            await repository.InsertAsync(hotel);
+            return new ResponseHotelDto
+            {
+                Id = hotel.Id,
+                Nome = hotel.Nome,
+                Cnpj = hotel.Cnpj
+            };
         }
     }
 }
