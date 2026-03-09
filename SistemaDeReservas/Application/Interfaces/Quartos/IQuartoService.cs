@@ -5,6 +5,6 @@ namespace SistemaDeReservas.Application.Interfaces.Quartos
     public interface IQuartoService
     {
         Task<IEnumerable<ResponseQuartoDto>> GetAllQuarto();
-        Task<int> InsertAsync(CreateQuartoDto dto);
+        Task<ResponseQuartoDto> InsertAsync(CreateQuartoDto dto);
     }
 }
