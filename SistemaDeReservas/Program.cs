@@ -8,6 +8,9 @@ using SistemaDeReservas.Application.Services;
 using SistemaDeReservas.Application.Services.Hoteis;
 using SistemaDeReservas.Application.Services.Quartos;
 using SistemaDeReservas.Application.Services.Reservas;
+using SistemaDeReservas.Application.Validators.Hoteis;
+using SistemaDeReservas.Application.Validators.Quartos;
+using SistemaDeReservas.Application.Validators.Reservas;
 using SistemaDeReservas.Application.Validators.Users;
 using SistemaDeReservas.Infraestructure.Repositories;
 using System.Data;
@@ -26,6 +29,9 @@ builder.Services.AddScoped<IDbConnection>(sp =>
 
 // Validators
 builder.Services.AddValidatorsFromAssemblyContaining<CreateUserValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateHotelValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateQuartoValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateReservaValidator>();
 
 // Users
 builder.Services.AddScoped<IUserRepository, UserRepository>();
