@@ -15,6 +15,11 @@ namespace SistemaDeReservas.Infraestructure.Repositories
         {
             _connection = connection;
         }
+        public async Task<Quarto?> GetByIdAsync(Guid id)
+        {
+            var sql = "SELECT Id, Nome, Quantidade, Capacidade, Diaria, HotelId FROM Quartos WHERE Id = @Id";
+            return await _connection.QueryFirstOrDefaultAsync<Quarto>(sql, new { Id = id });
+        }
 
         public async Task<IEnumerable<Quarto>> GetAllAsync()
         {
