@@ -14,6 +14,12 @@ namespace SistemaDeReservas.Infraestructure.Repositories
             _connection = connection;
         }
 
+        public async Task<User?> GetByIdAsync(Guid id)
+        {
+            var sql = "SELECT Id, Nome, Cpf FROM Users WHERE Id = @Id";
+            return await _connection.QueryFirstOrDefaultAsync<User>(sql, new { Id = id });
+        }
+
         public async Task<IEnumerable<User>> GetAllAsync()
         {
             var sql = "SELECT Id, Nome, Cpf FROM Users";
