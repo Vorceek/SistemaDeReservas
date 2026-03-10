@@ -14,6 +14,12 @@ namespace SistemaDeReservas.Infraestructure.Repositories
             _connection = connection;
         }
 
+        public async Task<Reserva?> GetByIdAsync(Guid id)
+        {
+            var sql = "SELECT Id, HotelId, QuartoId, UserId, CheckIn, CheckOut FROM Reservas WHERE Id = @Id";
+            return await _connection.QueryFirstOrDefaultAsync<Reserva>(sql, new { Id = id });
+        }
+
         public async Task<IEnumerable<Reserva>> GetAllAsync()
         {
             var sql = "SELECT Id, HotelId, QuartoId, UserId, CheckIn, CheckOut FROM Reservas";
