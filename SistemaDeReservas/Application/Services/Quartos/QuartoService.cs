@@ -1,14 +1,25 @@
 ﻿using SistemaDeReservas.Application.DTOs.Quartos;
+using SistemaDeReservas.Application.Interfaces.Hoteis;
 using SistemaDeReservas.Application.Interfaces.Quartos;
+using SistemaDeReservas.Application.Interfaces.Reservas;
 using SistemaDeReservas.Domain.Entities;
 
 namespace SistemaDeReservas.Application.Services.Quartos
 {
-    public class QuartoService(IQuartoRepository repository) : IQuartoService
+    public class QuartoService : IQuartoService
     {
+        private readonly IQuartoRepository _quartoRepository;
+        private readonly IHotelRepository _hotelRepository;
+
+        public QuartoService(IQuartoRepository quartoRepository, IHotelRepository hotelRepository       )
+        {
+            _quartoRepository = quartoRepository;
+            _hotelRepository = hotelRepository;
+        }
+
         public async Task<IEnumerable<ResponseQuartoDto>> GetAllQuarto()
         {
-            var quarto = await repository.GetAllAsync();
+            var quarto = await _quartoRepository.GetAllAsync();
             return quarto.Select(q => new ResponseQuartoDto
             {
                 Id = q.Id,
@@ -22,6 +33,10 @@ namespace SistemaDeReservas.Application.Services.Quartos
 
         public async Task<ResponseQuartoDto> InsertAsync(CreateQuartoDto dto)
         {
+            var hotel = await _hotelRepository.GetByIdAsync(dto.HotelId);
+            if (hotel == null)
+                throw new Exception("Hotel não encontrado");
+
             var quarto = new Quarto
             {
                 Id = Guid.NewGuid(),
@@ -31,7 +46,7 @@ namespace SistemaDeReservas.Application.Services.Quartos
                 Diaria = dto.Diaria,
                 HotelId = dto.HotelId
             };
-            await repository.InsertAsync(quarto);
+            await _quartoRepository.InsertAsync(quarto);
             return new ResponseQuartoDto
             {
                 Id = quarto.Id,
